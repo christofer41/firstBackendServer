@@ -1,0 +1,12 @@
+GET http://localhost:3000/greens
+
+
+###
+
+Post http://localhost:3000/greens
+Content-Type: application/json
+
+{
+    "name": "Andreas",
+    "age": "29"
+}
