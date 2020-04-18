@@ -37,3 +37,18 @@ function printGreens(greens) {
         
     });
 }
+
+
+$(document).ready(function(){
+    var itemName;
+    $("#submit").click(function(){
+      Name="banana";
+      Class="fruit";
+      $.post("http://localhost:3000/login",{itemName: Name,itemClass: Class}, function(data){
+        if(data==='done')
+          {
+            alert("login success");
+          }
+      });
+    });
+  });

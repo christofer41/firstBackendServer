@@ -1,5 +1,11 @@
-const express = require("express")
-const app = express()
+var express        =         require("express");
+var bodyParser     =         require("body-parser");
+var app            =         express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static("public"))
+
 
 const greens = [
     {
@@ -36,19 +42,31 @@ const greens = [
     },
 ]
 
-app.use(express.json())
-app.use(express.static("public"))
 
 app.get("/greens", (req, res) => {
     res.json(greens)
 })
 
-app.post("/greens", (req, res) => {
-    greens.push(req.body)
-    res.status(201)
-    res.send()
-})
+app.post('/login', (req,res) => {
+  var itemName=req.body.itemName;
+  var itemClass=req.body.itemClass;
+  console.log("name = "+itemName);
+  console.log("class = "+itemClass);
 
+  let groupTogether = {
+      name: itemName,
+      class: itemClass
+  }
+  console.log(groupTogether)
+
+  greens.push(groupTogether)
+  res.status(201)
+
+  console.log(greens)
+
+  res.send()
+
+});
 app.listen(3000, "localhost", () => {
     console.log("the server is up and running! http://localhost:3000/greens")
 })
