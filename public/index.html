@@ -5,60 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
-    <script src="./index.js"></script>
+    <script defer src="./index.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div id="greensContainer">
-        <div>
-            <table id="greensTable">
-                <tr>
-                    <th>Fruits</th>
-                    <th>Vegetables</th>
-                </tr>
-            </table>
+    <div class="container">
+        <div class="topOfPhone">
+            <div class="logoAndSpeaker">
+                <span class="speaker"><div></div></span>
+                <h3 class="logo">Samsung</h3>
+            </div>
+            <div>
+                <span class="camera"><span></span></span>
+            </div>
         </div>
-        <div class="theList">
-            <table id="fruitTable">
-            </table>
-            <table id="vegetableTable">
-            </table>
+
+        <div class="theScreen">
+            <div>
+                <table id="greensTable">
+                    <tr>
+                        <th>Fruits</th>
+                        <th>Vegetables</th>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <div class="theList">
+                <table id="fruitTable">
+                    </table>
+                    <table id="vegetableTable">
+                </table>
+            </div>
+
+            <div>
+                <form class="submitValue">
+                    <div>
+                        <label for="submitNewValue">What would you like to add?</label>
+                    </div>
+                    <div>
+                        <input type="text" id="submitNewValue">
+                    </div>
+                    <div>
+                        <input type="radio" id="submitNewFruit" name="gender" value="Fruit" checked="checked">
+                        <label for="submitNewFruit">Fruit</label><br>
+                        <input type="radio" id="submitNewVegetable" name="gender" value="Vegetable">
+                        <label for="submitNewVegetable">Vegetable</label><br>
+                    </div>
+                    <div>
+                        <input type="button" id="submitNewObj" value="Submit" onclick="submitTheName()">
+                    </div>
+                  </form> 
+            </div>
+
+            <hr>
+
+            <div>
+                <form class="changeValue">
+                    <div>
+                        <label for="submitNewValue">What would you like to change?</label>
+                    </div>
+                    <div class="containerOfChangeValues"> 
+                        <label class="labelForChange" for="changeOldValue">What to replace</label>
+                        <label class="labelForChange" for="changeNewValue">Replace with</label>
+                    </div>
+                    <div class="containerOfChangeValue">
+                        <input type="text" id="changeOldValue">
+                        <input type="text" id="changeNewValue">
+                    </div>
+                    <div>
+                        <input type="radio" id="changeFruit" name="gender" value="Fruit" checked="checked">
+                        <label for="changeFruit">Fruit</label><br>
+                        <input type="radio" id="changeVegetable" name="gender" value="Vegetable">
+                        <label for="changeVegetable">Vegetable</label><br>
+                    </div>
+                    <div>
+                        <input type="button" id="changeObj" value="Change" onclick="changeTheName()">
+                    </div>
+                  </form> 
+            </div>
+
+            <hr>
+
+            <div>
+                <form class="deleteValue">
+                    <div>
+                        <label for="deleteValue">What would you like to remove?</label>
+                    </div>
+                    <div>
+                        <input type="text" id="deleteValue">
+                    </div>
+                    <div>
+                        <input type="button" id="deleteObj" value="Submit" onclick="removeTheName()">
+                    </div>
+                  </form> 
+            </div>
         </div>
-    </div>
-    <div>
-        <form class="submitValue">
-            <div>
-                <input type="text" id="submitNewValue">
-            </div>
-            <div>
-                <input type="radio" id="submitNewFruit" name="gender" value="Fruit" checked="checked">
-                <label for="submitNewFruit">Fruit</label><br>
-                <input type="radio" id="submitNewVegetable" name="gender" value="Vegetable">
-                <label for="submitNewVegetable">Vegetable</label><br>
-            </div>
-            <input type="button" id="submitNewObj" value="Submit" onclick="submitTheName()">
-          </form> 
-    </div>
-    <div>
-        <form class="changeValue">
-            <div>
-                <input type="text" id="changeOldValue">
-                <input type="text" id="changeNewValue">
-            </div>
-            <div>
-                <input type="radio" id="changeFruit" name="gender" value="Fruit" checked="checked">
-                <label for="changeFruit">Fruit</label><br>
-                <input type="radio" id="changeVegetable" name="gender" value="Vegetable">
-                <label for="changeVegetable">Vegetable</label><br>
-            </div>
-            <input type="button" id="changeObj" value="Change" onclick="changeTheName()">
-          </form> 
-    </div>
-    <div>
-        <form class="deleteValue">
-            <input type="text" id="deleteValue">
-            <input type="button" id="deleteObj" value="Submit" onclick="removeTheName()">
-          </form> 
+
+        <div class="bottomOfPhone">
+            <span onclick="mainButtonClicked()" class="homeButton"><span></span></span>
+        </div>
+
     </div>
 </body>
 </html>

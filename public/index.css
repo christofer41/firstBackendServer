@@ -2,25 +2,191 @@ html, body {
     margin: 0;
 }
 
-.submitValue >* {
+body {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+    background-image: url("./desk.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.changeValue >* {
-    display: flex;
-    flex-wrap: wrap;
+.container {
+    border: 2px solid rgb(187, 187, 187);
+    border-radius: 16px;
+    box-shadow: -5px 5px 10px 5px gray;
+    
+    background-color: rgb(73, 73, 73);
 }
 
-.deleteValue >* {
+.theScreen{
+    border: 2px solid rgb(187, 187, 187);
+    width: 94%;
+    margin-left: 7px;
+
+    background-color: #f6f4f9;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d7d2de' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.submitValue {
+    border-top: 2px solid rgb(187, 187, 187);
+}
+
+.theList, #greensTable {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    
+    overflow: auto;
+}
+
+#greensTable {
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 20px;
+}
+
+#greensTable >* {
+    margin-left: 10px;
+}
+
+label {
+    font-family: sans-serif;
+    font-style: italic;
 }
 
 .theList {
+    height: 150px;
+    width: 100%;
+}
+
+.theList >*{
+margin: 10px;
+}
+
+.submitValue >*, .changeValue >*, .deleteValue >*  {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+
+}
+
+#submitNewObj, #changeObj, #deleteObj {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 th {
     width: 80px;
+}
+
+hr {
+    height:  0px;
+    width: 100%;
+    color: rgb(187, 187, 187);
+}
+
+
+input{
+    text-align: center;
+}
+
+.labelForChange{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.containerOfChangeValue {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.containerOfChangeValue >* {
+    width: 40%;
+    margin: 5px;
+}
+
+.topOfPhone .logoAndSpeaker {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+    margin-left: 50px;
+    margin-right: 30px;
+}
+
+.topOfPhone {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.speaker {
+    height: 10px;
+    width: 100px;
+    background-color: #bbb;
+    border-radius: 16px;
+    display: inline-block;
+
+    border: 2px solid rgb(99, 99, 99);
+}
+
+.speaker >*{
+    border-bottom: dotted 3px black;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.logo {
+    margin: 5px;
+    margin-bottom: 0;
+    color: rgb(221, 221, 221);
+}
+
+.camera {
+    margin-bottom: 15px;
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    border: 3px solid rgb(99, 99, 99);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.bottomOfPhone {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.homeButton {
+    margin-top: 5px;
+    height: 20px;
+    width: 50px;
+    background-color: #bbb;
+    border-radius: 8px;
+    display: inline-block;
+
+    border: 2px solid rgb(99, 99, 99); ;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}.homeButton:hover {
+    border: 2px solid rgb(65, 65, 65); ;
 }

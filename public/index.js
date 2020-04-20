@@ -1,7 +1,6 @@
 fetch("http://localhost:3000/greens").then((response) => {
     return response.json()
 }).then((greens) => {
-    console.log(greens)
     printGreens(greens)
 })
 
@@ -14,20 +13,14 @@ function reprintGreens() {
     let fruitNr = fruitTable.childNodes.length
     let iFruit = 0;
     while (iFruit < fruitNr) {
-        console.log(fruitTable.childNodes[0])
         fruitTable.childNodes[0].remove()
-        console.log(fruitTable.childNodes.length)
-        console.log(fruitTable.childNodes[0])
         iFruit++;
     }
 
     let vegNr = vegetableTable.childNodes.length
     let iVeg = 0;
     while (iVeg < vegNr) {
-        console.log(vegetableTable.childNodes[0])
         vegetableTable.childNodes[0].remove()
-        console.log(vegetableTable.childNodes.length)
-        console.log(vegetableTable.childNodes[0])
         iVeg++;
     }
 
@@ -40,7 +33,6 @@ function reprintGreens() {
     fetch("http://localhost:3000/greens").then((response) => {
     return response.json()
 }).then((greens) => {
-    console.log(greens)
     printGreens(greens)
 })
 
@@ -119,15 +111,19 @@ function changeTheName() {
     let fruit = document.getElementById("changeFruit");
     let vegetable = document.getElementById("changeVegetable")
     let classChoice;
-
+    let error = false;
+    
     let userOld = document.getElementById("changeOldValue").value;
-    if (userOld == "") {
-        alert("please enter a value")
+    let userNew = document.getElementById("changeNewValue").value;
+
+    if (userOld == "" || userOld == null) {
+        alert("please enter a to replace")
+        error = true;
     }
 
-    let userNew = document.getElementById("changeNewValue").value;
     if (userNew == "") {
-        alert("please enter a value")
+        alert("please enter a value to change into")
+        error = true
     }
 
     if (fruit.checked) {
@@ -138,32 +134,59 @@ function changeTheName() {
     }
     else{
         alert("Please choose a class!")
+        error = true;
     }
-    fetch("http://localhost:3000/greens",
-    {
-        method: "PUT",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({itemName: userOld, itemNewName: userNew, itemClass: classChoice})
-    });
-    reprintGreens()
+
+    if(error == false) {
+        fetch("http://localhost:3000/greens",
+        {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({itemName: userOld, itemNewName: userNew, itemClass: classChoice})
+
+        });
+
+        fetch("http://localhost:3000/valueIsMissing").then((response) => {
+            return response.json()
+        }).then((valueIsMissing) => {
+        if(valueIsMissing == true) {
+            alert("I didn't find what you were searching for")
+        }
+        })
+        reprintGreens()
+    }
 }
 
 function removeTheName() {
 
     let userInput = document.getElementById("deleteValue").value;
-    if (userInput == "") {
-        alert("please enter a value")
+    if (userInput == "" || userInput == null) {
+        alert("please enter something to remove")
     }
+    else {
+        
+        fetch("http://localhost:3000/greens",
+        {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({itemName: userInput})
+        })
+        fetch("http://localhost:3000/valueIsMissing").then((response) => {
+            return response.json()
+        }).then((valueIsMissing) => {
+        if(valueIsMissing == true) {
+            alert("I didn't find what you were searching for")
+        }
+        })
+        reprintGreens()
 
-    fetch("http://localhost:3000/greens",
-    {
-        method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({itemName: userInput})
-    });
-    reprintGreens()
+    }
+}
+
+function mainButtonClicked() {
+    alert("This is not a phone, but It's nice to pretend :)")
 }

@@ -1,12 +1,12 @@
-var express        =         require("express");
-var bodyParser     =         require("body-parser");
-var app            =         express();
+let express = require("express");
+let bodyParser = require("body-parser");
+let app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"))
 
-
+let valueIsMissing = false
 let greens = [
     {
         name: "Tomato",
@@ -45,24 +45,25 @@ let greens = [
 
 app.get("/greens", (req, res) => {
     res.json(greens)
+    
 })
 
+app.get("/valueIsMissing", (req, res) => {
+    res.json(valueIsMissing)
+})
+
+
 app.post('/greens', (req,res) => {
-  var itemName=req.body.itemName;
-  var itemClass=req.body.itemClass;
-  console.log("name = "+itemName);
-  console.log("class = "+itemClass);
+  let itemName=req.body.itemName;
+  let itemClass=req.body.itemClass;
 
   let groupTogether = {
       name: itemName,
       class: itemClass
   }
-  console.log(groupTogether)
 
   greens.push(groupTogether)
   res.status(201)
-
-  console.log(greens)
 
   res.send()
 
@@ -70,23 +71,34 @@ app.post('/greens', (req,res) => {
 
 
 app.put("/greens", (req,res) => {
-    var itemName=req.body.itemName;
+    let itemName=req.body.itemName;
     let itemNewName=req.body.itemNewName;
     let itemNewClass=req.body.itemClass
 
-    console.log("name = "+itemName);
+    ("name = "+itemName);
 
     greens.forEach(greens => {
         if (itemName == greens.name) {
             greens.name = itemNewName;
             greens.class = itemNewClass
-            console.log(greens.name)
         }
     })
+
+    valueIsMissing = false; 
+    if (!greens.includes(itemName)) {
+        res.status(404);
+        changeTheError()
+        
+        return;
+    }
     
-    console.log(greens)
     res.send()
 })
+
+function changeTheError() {
+        valueIsMissing = true;  
+        ("hello")
+}
 
 app.delete("/greens", (req,res) => {
     let itemName=req.body.itemName
@@ -98,10 +110,17 @@ app.delete("/greens", (req,res) => {
 
     }
 
-    console.log(greens)
+    valueIsMissing = false; 
+    if (!greens.includes(itemName)) {
+        res.status(404);
+        changeTheError()
+        
+        return;
+    }
+
     res.send()
 })
 
 app.listen(3000, "localhost", () => {
-    console.log("the server is up and running! http://localhost:3000/")
+    console.log("the server is up and running! http://localhost:3000")
 })
