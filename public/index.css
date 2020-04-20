@@ -1,0 +1,26 @@
+html, body {
+    margin: 0;
+}
+
+.submitValue >* {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.changeValue >* {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.deleteValue >* {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.theList {
+    display: flex;
+}
+
+th {
+    width: 80px;
+}

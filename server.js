@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"))
 
 
-const greens = [
+let greens = [
     {
         name: "Tomato",
         class: "Fruit"
@@ -47,7 +47,7 @@ app.get("/greens", (req, res) => {
     res.json(greens)
 })
 
-app.post('/login', (req,res) => {
+app.post('/greens', (req,res) => {
   var itemName=req.body.itemName;
   var itemClass=req.body.itemClass;
   console.log("name = "+itemName);
@@ -67,6 +67,41 @@ app.post('/login', (req,res) => {
   res.send()
 
 });
+
+
+app.put("/greens", (req,res) => {
+    var itemName=req.body.itemName;
+    let itemNewName=req.body.itemNewName;
+    let itemNewClass=req.body.itemClass
+
+    console.log("name = "+itemName);
+
+    greens.forEach(greens => {
+        if (itemName == greens.name) {
+            greens.name = itemNewName;
+            greens.class = itemNewClass
+            console.log(greens.name)
+        }
+    })
+    
+    console.log(greens)
+    res.send()
+})
+
+app.delete("/greens", (req,res) => {
+    let itemName=req.body.itemName
+
+    let removeTheName = greens.findIndex(greens => itemName === greens.name)
+
+    if (removeTheName) {
+        greens.splice(removeTheName, 1)
+
+    }
+
+    console.log(greens)
+    res.send()
+})
+
 app.listen(3000, "localhost", () => {
-    console.log("the server is up and running! http://localhost:3000/greens")
+    console.log("the server is up and running! http://localhost:3000/")
 })
